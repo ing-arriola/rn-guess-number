@@ -4,6 +4,7 @@ const Header = ({ title }) => {
   return (
     <View style={styles.header}>
       <Text style={styles.headerTitle}>{title}</Text>
+      <Text style={styles.headerTitle}>By Jaime Arriola</Text>
     </View>
   );
 };
@@ -13,9 +14,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#000",
-    paddingTop: 20,
+    paddingTop: 30,
+    paddingBottom: 10,
     width: "100%",
-    height: 70,
+    height: 75,
   },
   headerTitle: {
     fontSize: 22,
