@@ -1,35 +1,54 @@
-import React from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import Card from "../Components/Card";
 import Input from "../Components/Input";
 import Colors from "../Constants/Colors";
 
 const StartGame = () => {
+  const [value, setValue] = useState("");
+  const userInputHandler = (enteredText) => {
+    setValue(enteredText.replace(/[^0-9]/g, ""));
+  };
   return (
-    <View style={styles.screen}>
-      <Text style={styles.title}>Start new game!!</Text>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}
+    >
+      <View style={styles.screen}>
+        <Text style={styles.title}>Start new game!!</Text>
 
-      <Card specificStyles={styles.card}>
-        <Text>Enter a new number</Text>
-        <Input
-          keyboardType="number-pad"
-          maxLength={2}
-          blurOnSubmit
-          autoCapitalize="none"
-          autoCorrect={false}
-          specificStyles={styles.input}
-        />
+        <Card specificStyles={styles.card}>
+          <Text>Enter a new number</Text>
+          <Input
+            keyboardType="number-pad"
+            maxLength={2}
+            blurOnSubmit
+            autoCapitalize="none"
+            autoCorrect={false}
+            specificStyles={styles.input}
+            value={value}
+            onChangeText={userInputHandler}
+          />
 
-        <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <Button title="Confirm" color={Colors.success} />
+          <View style={styles.buttonContainer}>
+            <View style={styles.button}>
+              <Button title="Confirm" color={Colors.success} />
+            </View>
+            <View style={styles.button}>
+              <Button color={Colors.alert} title="Reset" />
+            </View>
           </View>
-          <View style={styles.button}>
-            <Button color={Colors.alert} title="Reset" />
-          </View>
-        </View>
-      </Card>
-    </View>
+        </Card>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
