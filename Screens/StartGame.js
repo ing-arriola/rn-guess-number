@@ -13,7 +13,7 @@ import Input from "../Components/Input";
 import NumberContainer from "../Components/NumberContainer";
 import Colors from "../Constants/Colors";
 
-const StartGame = () => {
+const StartGame = ({ startGameHandler }) => {
   const [value, setValue] = useState("");
   const [confirmed, setConfirmed] = useState(false);
   const [selectedValue, setSelectedValue] = useState();
@@ -43,7 +43,10 @@ const StartGame = () => {
       <Card specificStyles={styles.selectedContainer}>
         <Text>You selected:</Text>
         <NumberContainer>{selectedValue}</NumberContainer>
-        <Button title="Start Game" />
+        <Button
+          title="Start Game"
+          onPress={() => startGameHandler(selectedValue)}
+        />
       </Card>
     );
   }
