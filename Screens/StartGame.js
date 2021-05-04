@@ -26,7 +26,7 @@ const StartGame = ({ startGameHandler }) => {
   };
   const confirmInputHandler = () => {
     const chosenNumber = parseInt(value);
-    if (isNaN(chosenNumber) || chosenNumber < 0) {
+    if (isNaN(chosenNumber) || chosenNumber < 0 || chosenNumber > 99 ) {
       Alert.alert("Error", "Number entered must be between 0-99", [
         { title: "OK", style: "destructive", onPress: resetInputHandler },
       ]);
