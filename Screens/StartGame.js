@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   StyleSheet,
-  Text,
   View,
   Button,
   TouchableWithoutFeedback,
@@ -12,6 +11,8 @@ import Card from "../Components/Card";
 import Input from "../Components/Input";
 import NumberContainer from "../Components/NumberContainer";
 import Colors from "../Constants/Colors";
+import BodyText from '../Components/BodyText'
+import TitleText from '../Components/TitleText'
 
 const StartGame = ({ startGameHandler }) => {
   const [value, setValue] = useState("");
@@ -41,7 +42,7 @@ const StartGame = ({ startGameHandler }) => {
   if (confirmed) {
     confirmation = (
       <Card specificStyles={styles.selectedContainer}>
-        <Text>You selected:</Text>
+        <BodyText>You selected:</BodyText>
         <NumberContainer>{selectedValue}</NumberContainer>
         <Button
           title="Start Game"
@@ -57,10 +58,10 @@ const StartGame = ({ startGameHandler }) => {
       }}
     >
       <View style={styles.screen}>
-        <Text style={styles.title}>Start new game!!</Text>
+      <TitleText style={styles.title}>Start new game!!</TitleText>
 
         <Card specificStyles={styles.card}>
-          <Text style={styles.subtitle}>Enter a new number</Text>
+          <BodyText style={styles.subtitle}>Enter a new number</BodyText>
           <Input
             keyboardType="number-pad"
             maxLength={2}
@@ -104,7 +105,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     marginVertical: 10,
-    fontFamily:'open-sans-bold'
   },
   subtitle: {
     fontSize: 18,
