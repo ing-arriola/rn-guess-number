@@ -1,5 +1,6 @@
 import React from 'react'
-import {View,Text,StyleSheet, Button} from 'react-native'
+import {View,StyleSheet, Button} from 'react-native'
+import BodyText from '../Components/BodyText'
 const GameOverScreen = ({setUserNUmber,setWin}) => {
     const reset = () => {
         console.log('holas');
@@ -8,7 +9,7 @@ const GameOverScreen = ({setUserNUmber,setWin}) => {
     }
     return (
         <View style={styles.screen} >
-            <Text>Game over</Text>
+            <BodyText>Game over</BodyText>
             <Button onPress={reset} title="Play Again"/>
         </View>
     )
