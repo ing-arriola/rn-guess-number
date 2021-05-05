@@ -3,6 +3,8 @@ import { View, StyleSheet, Button, Alert } from "react-native";
 import NumberContainer from "../Components/NumberContainer";
 import Card from "../Components/Card";
 import TitleText from '../Components/TitleText'
+import MButton from '../Components/MButton'
+import { AntDesign } from '@expo/vector-icons';
 
 const generateRandomNumber = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -57,8 +59,21 @@ const GameScreen = ({ userChoice, setWin }) => {
       <TitleText style={styles.title}>Smartphone Guess</TitleText>
       <NumberContainer>{currentGuess} </NumberContainer>
       <Card specificStyles={styles.buttonContainer}>
-        <Button title="LOWER" onPress={() => nextGuestHandler("lower")} />
-        <Button title="GREATER" onPress={() => nextGuestHandler("greater")} />
+        <View>
+          <MButton 
+            variant='success600'
+            onPress={() => nextGuestHandler("lower")}>
+            <AntDesign name="down" size={24} color="white" />
+          </MButton>  
+        </View>
+        <View>
+          <MButton
+            variant='primary'
+            onPress={() => nextGuestHandler("greater")}
+          >
+            <AntDesign name="up" size={24} color="white" />
+          </MButton>
+        </View>
       </Card>
     </View>
   );
@@ -77,7 +92,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 13,
-    width: 300,
+    width: 220,
     padding: 20,
   },
 });
