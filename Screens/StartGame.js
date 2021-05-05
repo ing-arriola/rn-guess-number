@@ -13,6 +13,7 @@ import NumberContainer from "../Components/NumberContainer";
 import Colors from "../Constants/Colors";
 import BodyText from '../Components/BodyText'
 import TitleText from '../Components/TitleText'
+import MButton from '../Components/MButton'
 
 const StartGame = ({ startGameHandler }) => {
   const [value, setValue] = useState("");
@@ -44,10 +45,12 @@ const StartGame = ({ startGameHandler }) => {
       <Card specificStyles={styles.selectedContainer}>
         <BodyText>You selected:</BodyText>
         <NumberContainer>{selectedValue}</NumberContainer>
-        <Button
-          title="Start Game"
+        <MButton
+          variant='primary'
           onPress={() => startGameHandler(selectedValue)}
-        />
+        >
+          Start Game
+        </MButton>
       </Card>
     );
   }
@@ -75,18 +78,20 @@ const StartGame = ({ startGameHandler }) => {
 
           <View style={styles.buttonContainer}>
             <View style={styles.button}>
-              <Button
-                title="Confirm"
-                color={Colors.success}
+              <MButton
+                variant='primary'
                 onPress={confirmInputHandler}
-              />
+              >
+                Confirm
+              </MButton>
             </View>
             <View style={styles.button}>
-              <Button
-                color={Colors.alert}
-                title="Reset"
+              <MButton
+                variant='alert'
                 onPress={resetInputHandler}
-              />
+              >
+                Reset
+              </MButton>
             </View>
           </View>
         </Card>
