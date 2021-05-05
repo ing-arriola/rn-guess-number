@@ -1,5 +1,7 @@
 export default {
   alert: "#dc3545",
-  success: "green",
-  primary: "#007bff"
+  success: "#28a745",
+  success600:"#4da3ff",
+  primary: "#007bff",
+  warning: "ffc107",
 };
