@@ -1,10 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import TitleText from '../Components/TitleText'
 const Header = ({ title }) => {
   return (
     <View style={styles.header}>
-      <Text style={styles.headerTitle}>{title}</Text>
-      <Text style={styles.headerTitle}>By Jaime Arriola</Text>
+      <TitleText style={styles.headerTitle}>{title}</TitleText>
+      <TitleText style={styles.headerTitle}>By Jaime Arriola</TitleText>
     </View>
   );
 };
