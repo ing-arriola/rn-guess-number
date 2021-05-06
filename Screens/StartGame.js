@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   },
   card: {
     maxWidth:'95%',
-    minWidth:300,
+    minWidth: Dimensions.get('window').height > 600  ? 300 : 200,
     width:'80%',
     alignItems: "center",
     padding: 18,
