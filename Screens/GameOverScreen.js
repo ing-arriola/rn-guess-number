@@ -1,5 +1,5 @@
 import React from 'react'
-import {View,StyleSheet, Button,Image, Dimensions} from 'react-native'
+import {View,StyleSheet, Button,Image, Dimensions,ScrollView} from 'react-native'
 import TitleText from '../Components/TitleText'
 const GameOverScreen = ({setUserNUmber,setWin}) => {
     const reset = () => {
@@ -8,17 +8,19 @@ const GameOverScreen = ({setUserNUmber,setWin}) => {
         setWin(false)
     }
     return (
-        <View style={styles.screen} >
-            <TitleText>Game over</TitleText>
-            <View style={styles.imageContainer} >
-                <Image 
-                    source={require("../assets/success.png")} 
-                    style={styles.image}
-                    resizeMode='cover'
-                    />
+        <ScrollView>
+            <View style={styles.screen} >
+                <TitleText>Game over</TitleText>
+                <View style={styles.imageContainer} >
+                    <Image 
+                        source={require("../assets/success.png")} 
+                        style={styles.image}
+                        resizeMode='cover'
+                        />
+                </View>
+                <Button onPress={reset} title="Play Again"/>
             </View>
-            <Button onPress={reset} title="Play Again"/>
-        </View>
+        </ScrollView>
     )
 }
 
