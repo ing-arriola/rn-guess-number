@@ -1,5 +1,5 @@
 import React from 'react'
-import {View,Text,StyleSheet,TouchableOpacity, Button} from 'react-native'
+import {View,Text,StyleSheet,TouchableOpacity, Dimensions} from 'react-native'
 import Colors from '../Constants/Colors'
 
 const MButton = (props) => {
@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
         textAlign:'center'
     },
     button:{
-        paddingHorizontal:20,
-        paddingVertical:12,
+        paddingHorizontal: Dimensions.get('window').height > 600  ? 20 : 12,
+        paddingVertical:Dimensions.get('window').height > 600  ? 12 : 5,
         borderRadius:5  
     },
     primary:{
