@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import {
   StyleSheet,
   View,
-  Button,
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
+  Dimensions
 } from "react-native";
 import Card from "../Components/Card";
 import Input from "../Components/Input";
@@ -82,7 +82,7 @@ const StartGame = ({ startGameHandler }) => {
                 variant='primary'
                 onPress={confirmInputHandler}
               >
-                Confirm
+                OK
               </MButton>
             </View>
             <View style={styles.button}>
@@ -115,10 +115,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   card: {
-    width: 400,
-    maxWidth: "80%",
+    maxWidth:'95%',
+    minWidth:300,
+    width:'80%',
     alignItems: "center",
-    padding: 25,
+    padding: 18,
   },
   buttonContainer: {
     flexDirection: "row",
@@ -128,7 +129,8 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   button: {
-    width: 100,
+    //width: 100,
+    width:Dimensions.get('window').width / 4
   },
   input: {
     width: 100,
