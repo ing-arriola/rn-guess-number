@@ -35,13 +35,30 @@ const GameScreen = ({ userChoice, setWin }) => {
   const [prevGuesses,setPrevGuesses] = useState([initialGuess])
   const currentLow = useRef(1)
   const currentHigh = useRef(100)
-
+  const [deviceSize, setDeviceSize] = useState({
+    width:Dimensions.get('window').width,
+    height:Dimensions.get('window').height
+  })
   useEffect(()=>{
     if(userChoice===currentGuess){
       setWin(true)
     }
   },[currentGuess,userChoice])
 
+  useEffect(() => {
+    const updateLayout =  () => {
+      setDeviceSize({
+        width:Dimensions.get('window').width,
+        height:Dimensions.get('window').height
+      })
+    }    
+    
+    Dimensions.addEventListener('change',updateLayout)
+
+    return () => {
+      Dimensions.removeEventListener('change',updateLayout)
+    }
+  })
 
   const nextGuestHandler = (direction) => {
     if (
@@ -66,6 +83,37 @@ const GameScreen = ({ userChoice, setWin }) => {
     setCurrentGuess(nextNumber);
     setPrevGuesses(currentVal => [nextNumber,...currentVal])
   };
+
+  if(deviceSize.height < 500){
+    return(
+      <View style={styles.screen}>
+      <TitleText style={styles.title}>Smartphone Guess</TitleText>
+      <View style={styles.controls}>
+        <View>
+          <MButton 
+            variant='success600'
+            onPress={() => nextGuestHandler("lower")}>
+            <AntDesign name="down" size={24} color="white" />
+          </MButton>  
+        </View>
+        <NumberContainer>{currentGuess} </NumberContainer>
+        <View>
+          <MButton
+            variant='primary'
+            onPress={() => nextGuestHandler("greater")}
+          >
+            <AntDesign name="up" size={24} color="white" />
+          </MButton>
+        </View>
+      </View>
+      <View style={styles.list} >
+        <ScrollView>
+          {prevGuesses.map((guess,index) => itemToRender(guess, prevGuesses.length - index))}
+        </ScrollView>
+      </View>
+    </View>
+    )
+  }
 
   return (
     <View style={styles.screen}>
@@ -112,6 +160,12 @@ const styles = StyleSheet.create({
     marginTop: Dimensions.get('window').height > 600 ? 20 : 5,
     width: Dimensions.get('window').height > 600  ? 220 : 180,
     padding: Dimensions.get('window').height > 600  ? 20 : 10,
+  },
+  controls:{
+    flexDirection:'row',
+    justifyContent:'space-around',
+    alignItems:'center',
+    width:'50%'
   },
   list:{
     flex:1,
