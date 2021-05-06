@@ -10,11 +10,11 @@ const Card = ({ children, specificStyles }) => {
 
 const styles = StyleSheet.create({
   inputContainer: {
-    marginTop: 10,
+    marginTop: 8,
 
-    elevation: 10, //This just works on Android
+    elevation: 5, //This just works on Android
     backgroundColor: "#fff",
-    padding: 10,
+    padding: 8,
     borderRadius: 10,
     shadowColor: "#000", //shadow just works on iOS
     shadowOpacity: 0.26,
