@@ -1,5 +1,5 @@
 import React from 'react'
-import {View,StyleSheet, Button,Image} from 'react-native'
+import {View,StyleSheet, Button,Image, Dimensions} from 'react-native'
 import TitleText from '../Components/TitleText'
 const GameOverScreen = ({setUserNUmber,setWin}) => {
     const reset = () => {
@@ -29,13 +29,13 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     imageContainer:{
-        width:300,
-        height:300,
-        borderRadius:300/2,
+        width:Dimensions.get('window').width * 0.7,
+        height:Dimensions.get('window').width  * 0.7,
+        borderRadius:Dimensions.get('window').width  * 0.7 /2,
         borderWidth:1,
         borderColor:'#000',
         overflow:'hidden',
-        marginVertical:30
+        marginVertical:Dimensions.get('window').height / 20
     },
     image:{
         width:'100%',
